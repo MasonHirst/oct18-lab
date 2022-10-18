@@ -26,7 +26,7 @@ module.exports = {
         let newHouse = {
             id: nextId,
             address,
-            price,
+            price: +price,
             imageURL
         }
 
@@ -41,14 +41,12 @@ module.exports = {
         console.log(type + ' to ' + id)
 
         let index = houses.findIndex(element => element.id === +id)
-
-        let newPrice = +(houses[index].price)
         
         if (type === 'plus') {
-            (houses[index].price) = newPrice + 10000
+            (houses[index].price) += 10000
             res.status(200).send(houses)
         } else if (type === 'minus') {
-            houses[index].price = newPrice - 10000
+            houses[index].price -= 10000
             res.status(200).send(houses)
         } else {
             res.sendStatus(400)
